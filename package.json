@@ -1,0 +1,14 @@
+{
+  "name": "nimcode-test-server",
+  "version": "1.0.0",
+  "description": "A test server that I made to test my google cloud server instance",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luis M. Santander",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
