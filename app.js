@@ -9,13 +9,10 @@ const { SLEEP_TIMER } = require("./config");
 const path = __dirname; 
 const PORT = process.env.PORT || 3000; 
 
-const snoozeButton = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const alarmClock = async (callback) => {
-  callback(); 
-//   console.log(`About to Sleep for ${SLEEP_TIMER}`);
-  await snoozeButton(SLEEP_TIMER);
-//   console.log('Woke up from Long Snap');
+
+const alarmClock = (callback) => {
+	setInterval(callback, SLEEP_TIMER); 
 };
 
 const checkStatus = () => {
@@ -53,11 +50,10 @@ const checkStatus = () => {
 	}
 };
 
-const nimcodeCheckStatusRobot = async () => {
+const nimcodeCheckStatusRobot = () => {
 	// Fix code and place try catch here TODO: 
-	while (true) {
-		await alarmClock(checkStatus); 
-	}
+	alarmClock(checkStatus); 
+	
 };
 
 // GET ROUTES
@@ -67,8 +63,8 @@ app.get("/", (req, res, next) => {
 });
 
 const init = () => {
-	nimcodeCheckStatusRobot(); 
 	app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`)); 
+	nimcodeCheckStatusRobot(); 
 };
 
 init(); 
